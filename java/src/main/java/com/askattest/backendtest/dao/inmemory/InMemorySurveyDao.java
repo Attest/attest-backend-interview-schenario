@@ -1,11 +1,8 @@
 package com.askattest.backendtest.dao.inmemory;
 
 import com.askattest.backendtest.dao.SurveyDao;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 public class InMemorySurveyDao implements SurveyDao {
 
@@ -22,5 +19,11 @@ public class InMemorySurveyDao implements SurveyDao {
     }
 
     return questionsIds;
+  }
+
+  @Override
+  public Optional<Integer> getFirstQuestionId(final int surveyId) {
+    List<Integer> questionIds = questionIdsBySurveyId.get(surveyId);
+    return questionIds != null && !questionIds.isEmpty() ? Optional.of(questionIds.get(0)) : Optional.empty();
   }
 }

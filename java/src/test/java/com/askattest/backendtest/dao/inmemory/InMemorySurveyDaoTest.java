@@ -2,9 +2,8 @@ package com.askattest.backendtest.dao.inmemory;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,5 +35,17 @@ public class InMemorySurveyDaoTest {
         "Expected correct survey question IDs",
         Arrays.asList(100, 101, 102, 103, 104, 105, 106, 107, 108, 109),
         questionIds);
+  }
+
+  @Test
+  public void getFirstQuestionIdSurveyDoesntExist() throws Exception {
+    assertEquals(
+            "Expected survey to not exist", Optional.empty(), inMemorySurveyDao.getFirstQuestionId(812));
+  }
+
+  @Test
+  public void getFirstQuestionIdSurveyExists() throws Exception {
+    assertEquals(
+            "Expected correct question ID", Optional.of(100), inMemorySurveyDao.getFirstQuestionId(200));
   }
 }
