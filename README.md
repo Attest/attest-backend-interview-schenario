@@ -36,6 +36,12 @@ Notes
 - Imagine this will be used in a production environment, potentially receiving multiple requests at the same time.
 - Consider time and memory performance.
 
+Additional assumptions
+-----
+- In case of empty answers array the progress should be able to return the link to the first question of survey. 
+- Therefore, the assumption is there is exactly one first question for given survey. The survey DAO has been amended to return ID of first question.
+
+
 What we will look at
 --------------------
 We care about (in this order):
